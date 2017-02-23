@@ -14,11 +14,18 @@ namespace Poker
             Hand hand = Get5Cards();
             // Evaluate what kind of hand
             HandType ht1 = hand.Evaluate();
+            int highest1 = hand.cards.Max().rank;
+            //Console.WriteLine(ht1);
+            //Console.WriteLine(highest1);
 
             // Get 5 other cards
             Hand hand2 = Get5Cards();
             // Evaluate type
             HandType ht2 = hand2.Evaluate();
+            int highest2 = hand2.cards.Max().rank;
+            //Console.WriteLine(ht2);
+            //Console.WriteLine(highest2);
+
 
             // If types are different, better one wins
             if (ht1 > ht2)
@@ -26,13 +33,20 @@ namespace Poker
             else if (ht1 < ht2)
                 Console.WriteLine("Hand 2 is better");
             // If types are same, evaluate with a tie breaker
+
+            Hand winner = TieBreaker(ht1, ht2, highest1, highest2);
+            
+            /*
+            else if (highest1 > highest2)
+            {
+                Console.WriteLine("Hand 1 wins with " + hand.cards.Max() + ".");
+                Console.ReadLine();
+            }
             else
             {
-                Console.WriteLine("You have broken out here.");
+                Console.WriteLine("Hand 2 wins with highest " + hand2.cards.Max() + ".");
                 Console.ReadLine();
-//                TieBreak(ht1, hand, hand2);
-            }
-
+            }  */
         }
 
         static Hand Get5Cards()

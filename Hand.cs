@@ -22,21 +22,37 @@ namespace Poker
         {
             // Sort cards for easier evaluation
             Array.Sort(cards);
+
             // Am I a flush?
             bool flush = IsFlush();
             if (flush == true)
                 Console.WriteLine("I am a flush.");
+
             // Am I a straight?
             bool straight = IsStraight();
             if (straight == true)
                 Console.WriteLine("I am a straight.");
-            // Do I have pairs? Or more of a kind?
+
+            // Do I have pairs?
             int pairs = CountPairs();
             if (pairs != 0)
                 Console.WriteLine("I have " + pairs + " pair(s).");
             else
                 Console.WriteLine("I have no pairs.");
-            //int mostOfAKind = MostOfAKind();
+
+            // Do I have 3 or 4 of a kinds?
+            int mostOfAKind = MostOfAKind();
+            if (mostOfAKind != 0)
+                Console.WriteLine("I have " + mostOfAKind + " of-a-kind.");
+            else
+                Console.WriteLine("I don't have any types of kinds.");
+
+
+            // if nothing
+            if (flush != true && straight != true && pairs == 0 && mostOfAKind == 0)
+            {
+                return HandType.HighCard;
+            }
 
             return HandType.Flush;
         }
@@ -95,6 +111,30 @@ namespace Poker
                 rank = cards[i].rank;
             }
             return true;
+        }
+
+        private int MostOfAKind()
+        {
+            Dictionary<int, int> AKinds = new Dictionary<int, int>();
+
+            for (int i = 0; i < cards.Length; i++)
+            {
+                if (AKinds.ContainsKey(cards[i].rank))
+                {
+                    AKinds[cards[i].rank] = AKinds[cards[i].rank] + 1;
+                }
+                else
+                    AKinds[cards[i].rank] = 1;
+            }
+
+            foreach (KeyValuePair<int, int> entry in AKinds)
+            {
+                if (entry.Value == 4)
+                    return entry.Value;
+                else if (entry.Value == 3)
+                    return entry.Value;
+            }
+            return 0;
         }
     }
 }

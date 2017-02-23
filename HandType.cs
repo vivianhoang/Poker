@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Poker
 {
+    // enum starts at 0
     public enum HandType
     {
         HighCard,
         Pair,
-        TwoPair,
+        TwoPair ,
         ThreeOfAKind,
         Straight,
         Flush,

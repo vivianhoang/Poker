@@ -33,7 +33,12 @@ namespace Poker
                 rank = 10;
             else if (ch == 'J')
                 rank = 11;
-            // TODO Q, K, A
+            else if (ch == 'Q')
+                rank = 12;
+            else if (ch == 'K')
+                rank = 13;
+            else if (ch == 'A')
+                rank = 14;
             // everything else is a suit
             else if (ch == 'S' || ch == 'C' || ch == 'D' || ch == 'H')
                 suit = ch;

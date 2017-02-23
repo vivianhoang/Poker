@@ -25,37 +25,67 @@ namespace Poker
 
             // Am I a flush?
             bool flush = IsFlush();
-            if (flush == true)
-                Console.WriteLine("I am a flush.");
 
             // Am I a straight?
             bool straight = IsStraight();
-            if (straight == true)
-                Console.WriteLine("I am a straight.");
 
             // Do I have pairs?
             int pairs = CountPairs();
-            if (pairs != 0)
-                Console.WriteLine("I have " + pairs + " pair(s).");
-            else
-                Console.WriteLine("I have no pairs.");
 
             // Do I have 3 or 4 of a kinds?
             int mostOfAKind = MostOfAKind();
-            if (mostOfAKind != 0)
-                Console.WriteLine("I have " + mostOfAKind + " of-a-kind.");
-            else
-                Console.WriteLine("I don't have any types of kinds.");
 
-
-            // if nothing
-            if (flush != true && straight != true && pairs == 0 && mostOfAKind == 0)
+            // Returning the type of hand the player has
+            if (flush && straight)
             {
-                return HandType.HighCard;
+                Console.WriteLine("Straight Flush");
+                return HandType.StraightFlush;
             }
+            else if (mostOfAKind == 4)
+            {
+                Console.WriteLine("4 of a kind");
+                return HandType.FourOfAKind;
+            }
+            else if (mostOfAKind == 3 && pairs == 1)
+            {
+                Console.WriteLine("Full House");
+                return HandType.FullHouse;
+            }
+            else if (flush)
+            {
+                Console.WriteLine("Flush");
+                return HandType.Flush;
+            }
+            else if (straight)
+            {
+                Console.WriteLine("Straight");
+                return HandType.Straight;
+            }
+            else if (mostOfAKind == 3)
+            {
+                Console.WriteLine("3 of a kind");
+                return HandType.ThreeOfAKind;
+            }
+            else if (pairs == 2)
+            {
+                Console.WriteLine("Two pairs");
+                return HandType.TwoPair;
+            }
+            else if (pairs == 1)
+            {
+                Console.WriteLine("One pair");
+                return HandType.Pair;
+            }
+            else 
+                return HandType.HighCard;
 
-            return HandType.Flush;
         }
+
+        //public Hand TieBreaker(Hand ht1, Hand ht2, int highest1, int highest2)
+        //{
+
+        //    return Hand (h1 or h2)
+        //}
 
         private int CountPairs()
         {
@@ -91,7 +121,6 @@ namespace Poker
             {
                 if (cards[i].suit != suit)
                 {
-                    Console.WriteLine("I am not a flush.");
                     return false;
                 }
             }
@@ -105,7 +134,6 @@ namespace Poker
             {
                 if (cards[i].rank != rank + 1)
                 {
-                    Console.WriteLine("I am not a straight.");
                     return false;
                 }
                 rank = cards[i].rank;

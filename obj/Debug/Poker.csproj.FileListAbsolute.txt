@@ -1,0 +1,6 @@
+C:\Users\v-vihoan\Desktop\LEAP\PokerKey\bin\Debug\Poker.exe.config
+C:\Users\v-vihoan\Desktop\LEAP\PokerKey\bin\Debug\Poker.exe
+C:\Users\v-vihoan\Desktop\LEAP\PokerKey\bin\Debug\Poker.pdb
+C:\Users\v-vihoan\Desktop\LEAP\PokerKey\obj\Debug\Poker.exe
+C:\Users\v-vihoan\Desktop\LEAP\PokerKey\obj\Debug\Poker.pdb
+C:\Users\v-vihoan\Desktop\LEAP\PokerKey\obj\Debug\Poker.csprojResolveAssemblyReference.cache
